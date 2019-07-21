@@ -1,6 +1,10 @@
 
 /*
 
+USAGE: einstein --extra-args="-I..." -p . XXX.cpp
+
+This program will predefine a CPP macro "EINSTIEN_GEN=1".
+
 For every class annotated with `annotate("SL-generate")`:
 
 * Generate Save routine:
@@ -212,5 +216,5 @@ int main(int argc, const char **argv) {
   Tool.appendArgumentsAdjuster(getInsertArgumentAdjuster(
     { { "-DEINSTEIN_GEN=1" }, },ArgumentInsertPosition::BEGIN));
   auto ret = Tool.run(newFrontendActionFactory<EinsteinAction>().get());
-  return 0;
+  return ret;
 }
