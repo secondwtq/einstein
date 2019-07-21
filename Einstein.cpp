@@ -3,7 +3,7 @@
 
 USAGE: einstein --extra-args="-I..." -p . XXX.cpp
 
-This program will predefine a CPP macro "EINSTIEN_GEN=1".
+This program will predefine a CPP macro "EINSTEIN_GEN=1".
 
 For every class annotated with `annotate("SL-generate")`:
 
