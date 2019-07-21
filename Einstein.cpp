@@ -204,11 +204,13 @@ static cl::extrahelp CommonHelp(CommonOptionsParser::HelpMessage);
 static cl::OptionCategory EinsteinCategory("einstein options");
 
 int main(int argc, const char **argv) {
-  printf("Einstein Lives!\n");
+  // printf("Einstein Lives!\n");
   sys::PrintStackTraceOnErrorSignal(argv[0]);
   CommonOptionsParser optionsParser(argc, argv, EinsteinCategory);
   ClangTool Tool(optionsParser.getCompilations(),
                  optionsParser.getSourcePathList());
+  Tool.appendArgumentsAdjuster(getInsertArgumentAdjuster(
+    { { "-DEINSTEIN_GEN=1" }, },ArgumentInsertPosition::BEGIN));
   auto ret = Tool.run(newFrontendActionFactory<EinsteinAction>().get());
   return 0;
 }
